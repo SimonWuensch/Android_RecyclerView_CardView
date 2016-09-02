@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CardViewApp</string>
+    <string name="app_name">Android_Fragment_with_CardView</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
