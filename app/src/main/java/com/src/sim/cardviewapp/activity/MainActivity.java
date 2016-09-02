@@ -2,19 +2,23 @@ package com.src.sim.cardviewapp.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.src.sim.cardviewapp.R;
-import com.src.sim.cardviewapp.fragment.CardViewFragment;
+import com.src.sim.cardviewapp.fragment.FragmentStandard;
 
 
 public class MainActivity extends Activity {
+
+    private static String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        showFragmentStandard();
     }
 
     @Override
@@ -37,5 +41,18 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    // ** FRAGMENT ****************************************************************************** //
+    public void showFragmentStandard() {
+        FragmentStandard fragmentStandard = FragmentStandard.newInstance();
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_fragment_container,
+                        fragmentStandard,
+                        fragmentStandard.TAG)
+                //.addToBackStack(FragmentListProject.TAG)
+                .commit();
+        Log.i(TAG, "Show Fragment [" + fragmentStandard.TAG + "].");
     }
 }
